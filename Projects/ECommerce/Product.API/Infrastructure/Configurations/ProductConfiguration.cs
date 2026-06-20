@@ -28,7 +28,11 @@ namespace Product.API.Infrastructure.Configurations
                 .HasDefaultValue(true);
 
             builder.Property(x => x.CreatedOn)
-                .IsRequired();
+                .HasDefaultValueSql("GETUTCDATE()")
+                .IsRequired(true);
+
+            builder.Property(x => x.UpdatedOn)
+                .HasDefaultValueSql("GETUTCDATE()");
         }
 
     }

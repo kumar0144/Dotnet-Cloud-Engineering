@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Product.API.Infrastructure.Persistence;
 
@@ -11,9 +12,11 @@ using Product.API.Infrastructure.Persistence;
 namespace Product.API.Migrations
 {
     [DbContext(typeof(ProductDbContext))]
-    partial class ProductDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260601050221_AddDefaultDateValuesToProducts")]
+    partial class AddDefaultDateValuesToProducts
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,7 +36,7 @@ namespace Product.API.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValueSql("GETUTCDATE()");
+                        .HasDefaultValue(new DateTime(2026, 6, 1, 5, 2, 18, 234, DateTimeKind.Utc).AddTicks(4917));
 
                     b.Property<string>("Description")
                         .HasMaxLength(1000)
@@ -59,7 +62,7 @@ namespace Product.API.Migrations
                     b.Property<DateTime?>("UpdatedOn")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValueSql("GETUTCDATE()");
+                        .HasDefaultValue(new DateTime(2026, 6, 1, 5, 2, 18, 235, DateTimeKind.Utc).AddTicks(1815));
 
                     b.HasKey("Id");
 

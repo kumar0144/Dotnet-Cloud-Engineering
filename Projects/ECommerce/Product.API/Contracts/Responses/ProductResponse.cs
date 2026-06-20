@@ -1,6 +1,6 @@
-﻿namespace Product.API.Domain
+﻿namespace Product.API.Contracts.Responses
 {
-    public class Product
+    public class ProductResponse
     {
         public int Id { get; set; }
 
@@ -12,11 +12,7 @@
 
         public int StockQuantity { get; set; }
 
-        public bool IsActive { get; set; } = true;
-
-        public DateTime CreatedOn { get; set; }
-
-        public DateTime? UpdatedOn { get; set; }
+        public bool IsActive { get; set; }
 
     }
 }
